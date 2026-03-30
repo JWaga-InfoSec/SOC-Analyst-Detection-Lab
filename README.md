@@ -1,4 +1,5 @@
 🛡️ SOC Analyst Detection Lab: Telemetry & SIEM Engineering
+
 📝 Project Executive Summary
 Coming from a background in Tactical Intelligence (SWAT) and Systemic Problem Solving (Amazon), I architected this isolated SOC environment to master the full lifecycle of a digital threat—from initial reconnaissance to SIEM visualization. This lab demonstrates my ability to engineer high-fidelity telemetry and troubleshoot complex infrastructure hurdles.
 
