@@ -1,9 +1,5 @@
 # 🛡️ SOC Analyst Detection Lab: Telemetry & SIEM Engineering
 
-<p align="center">
-  <img src="Diagrams/Network_Topology.png" width="800" alt="Network Topology">
-</p>
-
 ---
 
 ## 📝 Project Executive Summary
