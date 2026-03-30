@@ -1,56 +1,57 @@
-🛡️ SOC Analyst Detection Lab: Telemetry & SIEM Engineering
+# 🛡️ SOC Analyst Detection Lab: Telemetry & SIEM Engineering
 
-📝 Project Executive Summary
-Coming from a background in Tactical Intelligence (SWAT) and Systemic Problem Solving (Amazon), I architected this isolated SOC environment to master the full lifecycle of a digital threat—from initial reconnaissance to SIEM visualization. This lab demonstrates my ability to engineer high-fidelity telemetry and troubleshoot complex infrastructure hurdles.
+<p align="center">
+  <img src="Diagrams/Network_Topology.png" width="800" alt="Network Topology">
+</p>
 
-📁 Project Structure
-🏗️ Network Diagram - Visual layout of the isolated VMware environment.
+---
 
-📜 Configuration Scripts - Sysmon XML templates and Splunk SPL queries.
+## 📝 Project Executive Summary
+Coming from a background in **Tactical Intelligence (SWAT)** and **Systemic Problem Solving (Amazon)**, I architected this isolated SOC environment to master the full lifecycle of a digital threat. This lab demonstrates my ability to engineer high-fidelity telemetry, troubleshoot complex infrastructure, and visualize attack data in a SIEM.
 
-📊 Attack Evidence - Screenshots of Splunk Dashboards and PowerShell fixes.
+---
 
-📖 Technical Writeup - Deep dive into the investigative process.
+## 📁 Project Structure
+| Folder | Contents |
+| :--- | :--- |
+| **[🏗️ Diagrams](Diagrams/)** | Network Topology & Architecture Maps |
+| **[📜 Scripts](Scripts/)** | Sysmon XML Configs & Splunk SPL Queries |
+| **[📊 Evidence](Evidence/)** | Dashboard Screenshots & Error Resolutions |
+| **[📖 Documentation](Documentation/)** | Full Technical After-Action Reports (AAR) |
 
-🏗️ Lab Architecture & Design
-Environment Specifications:
-Virtualization: VMware Workstation Pro (Isolated Layer 2 LAN Segment).
+---
 
-Attacker Node: Kali Linux (192.168.242.130) - Executing Nmap Reconnaissance.
+## 🏗️ Lab Architecture & Design
+* **Virtualization:** VMware Workstation Pro (Isolated Layer 2 LAN Segment)
+* **Attacker Node:** Kali Linux (192.168.242.130) 
+* **Victim Node:** Windows 10 (192.168.242.128) - Hardened with **Sysmon**
+* **SIEM Node:** Ubuntu 22.04 (192.168.242.129) - **Splunk Enterprise**
 
-Victim Node: Windows 10 (192.168.242.128) - Hardened with Microsoft Sysmon.
+---
 
-SIEM Node: Ubuntu 22.04 (192.168.242.129) - Splunk Enterprise Indexer.
+## 🛠️ Technical Wins & Troubleshooting
 
-🛠️ Technical Wins & Troubleshooting
-The "ObjectNotFound" Resolution
-While deploying the telemetry agents, I encountered a PowerShell ItemNotFoundException regarding the Sysmon binary.
+### **The "ObjectNotFound" Resolution**
+While deploying telemetry agents, I encountered a **PowerShell `ItemNotFoundException`**.
+* **Investigation:** Utilized `Get-ChildItem -Recurse` to identify the absolute directory of the binary.
+* **Resolution:** Corrected the execution path to ensure the **Universal Forwarder** and **Sysmon** services initiated successfully.
+* **Evidence:** [View Resolution Screenshot](Evidence/PowerShell_ObjectNotFound_Resolution.png)
 
-Investigation: Utilized Get-ChildItem -Recurse to identify the absolute directory of the executable.
+---
 
-Resolution: Corrected the execution path to ensure the Universal Forwarder and Sysmon services initiated successfully.
+## 📊 Detection Results: Nmap Reconnaissance
+Successfully identified a high-volume connection spike on **Port 445 (SMB)** originating from the Kali Linux attacker node.
 
-Evidence: PowerShell Fix Screenshot
+* **Telemetry Source:** Sysmon Event ID 3 (Network Connection)
+* **SIEM Platform:** Splunk Enterprise
+* **Key Finding:** Identified stealth scanning patterns targeting Windows File Sharing services.
+* **Evidence:** [View Splunk Detection Dashboard](Evidence/Splunk_Nmap_Detection_Dashboard.png)
 
-Telemetry Engineering
-I deployed a customized Sysmon configuration (Event ID 3) to capture granular network connection data, specifically focusing on Port 445 (SMB) to identify lateral movement signatures.
+---
 
-📊 Detection Results
-Simulated Attack: Nmap Stealth Scan
-Using the Kali node, I executed a service-level scan against the Windows Target.
+## 🔑 Key Skills Acquired
+* **SIEM Mastery:** Splunk Search Processing Language (SPL) & Data Visualization.
+* **Endpoint Visibility:** Sysmon XML Deployment & Windows Event Log Management.
+* **Infrastructure Admin:** VMware Network Isolation & PowerShell Troubleshooting.
+* **Analytical Mindset:** Applying Tactical Intelligence (AAR) to Cyber Defense.
 
-SIEM Analysis
-Using Splunk SPL and manual Regex (rex) field extraction, I successfully isolated the reconnaissance traffic.
-
-Key Finding: Identified a high-volume spike from the Attacker IP targeting SMB ports.
-
-Evidence: View Splunk Detection Dashboard
-
-🔑 Key Skills Acquired
-SIEM Mastery: Splunk Search Processing Language (SPL), Dashboard Visualization.
-
-Endpoint Visibility: Sysmon XML Deployment, Windows Event Log Management.
-
-Infrastructure Admin: VMware Network Isolation, PowerShell Troubleshooting.
-
-Analytical Mindset: Applying Tactical Intelligence (AAR) to Cyber Defense.
